@@ -8,14 +8,17 @@ const Book = ({ book }) => {
   return (
     <>
       <div>
-        <div className="card bg-base-100 shadow-sm p-6">
-          <figure className="rounded-2xl bg-[#F3F3F3] py-5">
-            <img src={image} alt="Book" class="w-[134px] h-[166px]" />
+        <div className="card bg-base-100 shadow-sm p-6 h-125">
+          <figure className="rounded-2xl bg-[#F3F3F3] py-5 h-60">
+            <img src={image} alt="Book" className="w-[134px] h-[166px]" />
           </figure>
           <div className="card-body">
             <div className="border-b-2 border-dashed border-b-[#13131326] pb-5">
-              {tags.map((tag) => (
-                <button className="btn btn-xs ml-4 rounded-xl text-[#23BE0A] mb-4">
+              {tags.map((tag, idx) => (
+                <button
+                  key={idx}
+                  className="btn btn-xs ml-4 rounded-xl text-[#23BE0A] mb-4"
+                >
                   {tag}
                 </button>
               ))}
