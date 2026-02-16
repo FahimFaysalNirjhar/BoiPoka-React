@@ -1,6 +1,8 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import { useLoaderData, useParams } from "react-router";
 import "../../App.css";
+import { addreadLocal } from "../../components/localStorage/readLocal";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -19,6 +21,10 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = singleBook;
+
+  const handleReadBtn = (id) => {
+    addreadLocal(id);
+  };
 
   return (
     <div className="flex flex-col gap-12 md:flex-row max-w-[90%] mx-auto mt-12 mb-20">
@@ -87,7 +93,12 @@ const BookDetails = () => {
           </div>
         </div>
         <div className="flex gap-4">
-          <button className="btn btn-outline font-work-sans text-lg font-semibold">
+          <button
+            onClick={() => {
+              handleReadBtn(id);
+            }}
+            className="btn btn-outline font-work-sans text-lg font-semibold"
+          >
             Read
           </button>
           <button className="btn bg-[#50B1C9] text-white font-work-sans text-lg font-semibold">
@@ -95,6 +106,7 @@ const BookDetails = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />;
     </div>
   );
 };
