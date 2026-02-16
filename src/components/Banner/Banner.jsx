@@ -1,5 +1,6 @@
 import React from "react";
 import "../../App.css";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -11,9 +12,11 @@ const Banner = () => {
             <h1 className="text-5xl p-5 md:p-0 font-bold max-w-lg font-playfair-display">
               Books to freshen up your bookshelf
             </h1>
-            <button className="btn mt-12 bg-[#23BE0A] text-white font-work-sans text-xl font-bold p-7">
-              View The List
-            </button>
+            <Link to="/ListedBooks">
+              <button className="btn mt-12 bg-[#23BE0A] text-white font-work-sans text-xl font-bold p-7">
+                View The List
+              </button>
+            </Link>
           </div>
         </div>
       </div>

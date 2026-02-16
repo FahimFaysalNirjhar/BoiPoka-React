@@ -11,6 +11,10 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () =>
+          fetch(
+            "https://raw.githubusercontent.com/FahimFaysalNirjhar/boipoka-data/refs/heads/main/booksData.json",
+          ).then((res) => res.json()),
         path: "/",
         Component: Home,
       },
