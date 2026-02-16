@@ -1,13 +1,14 @@
 import React from "react";
 import "../../App.css";
 import { Star } from "lucide-react";
+import { Link } from "react-router";
 
 const Book = ({ book }) => {
-  const { bookName, author, image, rating, category, tags } = book;
+  const { bookName, bookId, author, image, rating, category, tags } = book;
 
   return (
     <>
-      <div>
+      <Link to={`/bookdetails/${bookId}`}>
         <div className="card bg-base-100 shadow-sm p-6 h-125">
           <figure className="rounded-2xl bg-[#F3F3F3] py-5 h-60">
             <img src={image} alt="Book" className="w-[134px] h-[166px]" />
@@ -25,7 +26,7 @@ const Book = ({ book }) => {
               <h2 className="card-title font-playfair-display text-2xl mb-4">
                 {bookName}
               </h2>
-              <p className="font-work-sans ">By : {author}</p>
+              <p className="font-work-sans">By : {author}</p>
             </div>
           </div>
           <div className="flex justify-between">
@@ -36,7 +37,7 @@ const Book = ({ book }) => {
             </p>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };
