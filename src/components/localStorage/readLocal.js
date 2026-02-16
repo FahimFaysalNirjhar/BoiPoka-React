@@ -35,4 +35,4 @@ const addreadLocal = (id) => {
   }
 };
 
-export { addreadLocal };
+export { addreadLocal, readgetLocal };
