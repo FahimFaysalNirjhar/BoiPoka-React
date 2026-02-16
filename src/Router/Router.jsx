@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ListedBooks",
+        loader: () =>
+          fetch(
+            "https://raw.githubusercontent.com/FahimFaysalNirjhar/boipoka-data/refs/heads/main/booksData.json",
+          ).then((res) => res.json()),
         Component: ListedBooks,
       },
       {
