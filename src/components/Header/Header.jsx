@@ -6,7 +6,7 @@ const Header = () => {
     <>
       <NavLink to="/" className="ml-5">
         <li>
-          <button className="text-lg font-work-sans ">Home</button>
+          <button className="text-lg font-work-sans">Home</button>
         </li>
       </NavLink>
       <NavLink to="/ListedBooks" className="ml-5">
