@@ -1,16 +1,108 @@
-# React + Vite
+# 📚 Book Vibe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Book Vibe is a modern React web application for book lovers.  
+It allows users to browse books, view detailed book information, add books to their reading list or wishlist, and track their reading progress. Built with **React**, **React Router v6**, **Tailwind CSS**, and **DaisyUI** for styling, with **localStorage** persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## React Compiler
+- Browse books in a responsive grid layout
+- View detailed book information:
+  - Title, author, category, review, tags, publisher, year, rating
+- Add books to:
+  - **Reading List**
+  - **Wishlist**
+- Prevent duplicate entries with SweetAlert popups
+- Notifications for user actions using Toastify
+- Responsive design with Tailwind CSS and DaisyUI
+- Dynamic routing using React Router v6.4+ loaders
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React 18, React Router v6, JSX
+- **Styling**: Tailwind CSS, DaisyUI, Google Fonts (Work Sans & Playfair Display)
+- **State & Storage**: localStorage for reading list and wishlist
+- **Notifications & Alerts**: react-toastify, sweetalert2
+- **Deployment**: Netlify / Vite
+
+---
+
+## 📂 Project Structure
+
+book-vibe/
+├─ public/
+│ └─ book.ico
+├─ src/
+│ ├─ components/
+│ │ ├─ Book/
+│ │ ├─ Header/
+│ │ └─ localStorage/
+│ │ ├─ readLocal.js
+│ │ └─ wishLocal.js
+│ ├─ pages/
+│ │ ├─ Root/
+│ │ ├─ Home/
+│ │ ├─ Listed_Books/
+│ │ └─ BookDetails/
+│ ├─ Router/
+│ │ └─ Router.jsx
+│ ├─ index.css
+│ └─ main.jsx
+├─ package.json
+└─ tailwind.config.js
+
+---
+
+## 🚀 Routing
+
+Uses **React Router v6.4+** with loaders to fetch book data from a GitHub JSON file.
+
+| Path               | Component   |
+| ------------------ | ----------- |
+| `/`                | Home        |
+| `/ListedBooks`     | ListedBooks |
+| `/bookdetails/:id` | BookDetails |
+
+---
+
+## 💾 LocalStorage Helpers
+
+- `readLocal.js` → manages reading list
+- `wishLocal.js` → manages wishlist
+- Both prevent duplicates and show alerts/toasts
+
+---
+
+## 🎨 Customization
+
+- Colors, fonts, and buttons are easily customizable via Tailwind CSS.
+- Change Google Fonts in `index.css`.
+- Update DaisyUI themes in `tailwind.config.js`.
+
+---
+
+## 📚 Future Improvements
+
+- User authentication
+- Sync reading/wishlist to a backend
+- Sorting and filtering books
+- Dark mode toggle
+- Pagination for large book lists
+
+---
+
+## 📜 License
+
+This project is **open-source and free** for personal or educational use. Contributions are welcome.
+
+---
+
+## 👤 Author
+
+**Fahim Faysal – Front-End Developer**
+
+- GitHub: [https://github.com/FahimFaysalNirjhar](https://github.com/FahimFaysalNirjhar)
+- Email: fahimfaysal1995@gmail.com
