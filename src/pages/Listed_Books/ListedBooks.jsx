@@ -6,12 +6,15 @@ import { readgetLocal } from "../../components/localStorage/readLocal";
 import Book from "../../components/Book/Book";
 import "../../App.css";
 import { ChevronDown } from "lucide-react";
+import { getWishLocal } from "../../components/localStorage/wishLocal";
 
 const ListedBooks = () => {
   const data = useLoaderData();
   const [sort, setSort] = useState("");
 
   const [readList, setReadList] = useState([]);
+
+  const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
     const storedId = readgetLocal();
@@ -22,18 +25,31 @@ const ListedBooks = () => {
     setReadList(updatedReadList);
   }, [data]);
 
+  useEffect(() => {
+    const storedId = getWishLocal();
+    const convertedStoredId = storedId.map((id) => Number(id));
+    const myWishList = data.filter((book) =>
+      convertedStoredId.includes(book.bookId),
+    );
+    setWishList(myWishList);
+  }, [data]);
+
   const handleSort = (type) => {
     setSort(type);
 
+    let sortedRead = [...readList];
+    let sortedWish = [...wishList];
+
     if (type === "Pages") {
-      const sortedBooks = [...readList].sort(
-        (a, b) => b.totalPages - a.totalPages,
-      );
-      setReadList(sortedBooks);
+      sortedRead.sort((a, b) => b.totalPages - a.totalPages);
+      sortedWish.sort((a, b) => b.totalPages - a.totalPages);
     } else if (type === "Rating") {
-      const sortedBooks = [...readList].sort((a, b) => b.rating - a.rating);
-      setReadList(sortedBooks);
+      sortedRead.sort((a, b) => b.rating - a.rating);
+      sortedWish.sort((a, b) => b.rating - a.rating);
     }
+
+    setReadList(sortedRead);
+    setWishList(sortedWish);
   };
 
   return (
@@ -43,7 +59,7 @@ const ListedBooks = () => {
           Books
         </h1>
       </div>
-      <div className="text-center mb-14">
+      <div className="text-center mb-24">
         <details className="dropdown">
           <summary className="btn m-1 bg-[#23BE0A] text-white">
             Sort By {sort ? ` : ${sort}` : <ChevronDown />}
@@ -72,7 +88,11 @@ const ListedBooks = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <h2>Wishlist Books</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {wishList.map((book) => (
+              <Book key={book.bookId} book={book}></Book>
+            ))}
+          </div>
         </TabPanel>
       </Tabs>
     </div>

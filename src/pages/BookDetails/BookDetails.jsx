@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { useLoaderData, useParams } from "react-router";
 import "../../App.css";
 import { addreadLocal } from "../../components/localStorage/readLocal";
+import { addWishListLocal } from "../../components/localStorage/wishLocal";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -24,6 +25,10 @@ const BookDetails = () => {
 
   const handleReadBtn = (id) => {
     addreadLocal(id);
+  };
+
+  const handleWishList = (id) => {
+    addWishListLocal(id);
   };
 
   return (
@@ -101,7 +106,10 @@ const BookDetails = () => {
           >
             Read
           </button>
-          <button className="btn bg-[#50B1C9] text-white font-work-sans text-lg font-semibold">
+          <button
+            onClick={() => handleWishList(id)}
+            className="btn bg-[#50B1C9] text-white font-work-sans text-lg font-semibold"
+          >
             Wishlist
           </button>
         </div>

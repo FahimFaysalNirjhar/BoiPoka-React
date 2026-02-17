@@ -38,7 +38,7 @@ const Book = ({ book }) => {
               </h2>
               <div className="flex justify-between">
                 <p className="font-work-sans">By : {author}</p>
-                <p className="flex gap-2">
+                <p className="flex gap-1">
                   <BookText /> Pages : {totalPages}
                 </p>
               </div>
