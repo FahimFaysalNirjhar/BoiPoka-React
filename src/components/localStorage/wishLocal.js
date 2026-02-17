@@ -36,4 +36,10 @@ const addWishListLocal = (id) => {
   }
 };
 
-export { addWishListLocal, getWishLocal };
+const removeWishLocal = (id) => {
+  const storedId = getWishLocal();
+  const remainingStoredId = storedId.filter((storedId) => storedId !== id);
+  localStorage.setItem("wishList", JSON.stringify(remainingStoredId));
+};
+
+export { addWishListLocal, getWishLocal, removeWishLocal };

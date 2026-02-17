@@ -35,4 +35,10 @@ const addreadLocal = (id) => {
   }
 };
 
-export { addreadLocal, readgetLocal };
+const removeReadLocal = (id) => {
+  const storedId = readgetLocal();
+  const remainingId = storedId.filter((storedId) => storedId !== id);
+  localStorage.setItem("readList", JSON.stringify(remainingId));
+};
+
+export { addreadLocal, readgetLocal, removeReadLocal };

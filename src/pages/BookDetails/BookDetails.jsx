@@ -2,8 +2,14 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 import { useLoaderData, useParams } from "react-router";
 import "../../App.css";
-import { addreadLocal } from "../../components/localStorage/readLocal";
-import { addWishListLocal } from "../../components/localStorage/wishLocal";
+import {
+  addreadLocal,
+  removeReadLocal,
+} from "../../components/localStorage/readLocal";
+import {
+  addWishListLocal,
+  removeWishLocal,
+} from "../../components/localStorage/wishLocal";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -24,10 +30,12 @@ const BookDetails = () => {
   } = singleBook;
 
   const handleReadBtn = (id) => {
+    removeWishLocal(id);
     addreadLocal(id);
   };
 
   const handleWishList = (id) => {
+    removeReadLocal(id);
     addWishListLocal(id);
   };
 
