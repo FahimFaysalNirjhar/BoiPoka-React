@@ -2,9 +2,19 @@ import React from "react";
 import "../../App.css";
 import { Star } from "lucide-react";
 import { Link } from "react-router";
+import { BookText } from "lucide-react";
 
 const Book = ({ book }) => {
-  const { bookName, bookId, author, image, rating, category, tags } = book;
+  const {
+    bookName,
+    bookId,
+    author,
+    image,
+    rating,
+    category,
+    tags,
+    totalPages,
+  } = book;
 
   return (
     <>
@@ -26,7 +36,12 @@ const Book = ({ book }) => {
               <h2 className="card-title font-playfair-display text-2xl mb-4">
                 {bookName}
               </h2>
-              <p className="font-work-sans">By : {author}</p>
+              <div className="flex justify-between">
+                <p className="font-work-sans">By : {author}</p>
+                <p className="flex gap-2">
+                  <BookText /> Pages : {totalPages}
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex justify-between">
